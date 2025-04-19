@@ -30,7 +30,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\Cors::class,
 
 
-            \App\Http\Middleware\EncryptCookies::class,
+            // \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
@@ -67,6 +67,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'role' => \App\Http\Middleware\RoleMiddleware::class, // Your custom role middleware
+        'role' => \App\Http\Middleware\RoleMiddleware::class,
+        'api.to.web' => \App\Http\Middleware\AuthenticateWithApiToken::class,
     ];
 }
