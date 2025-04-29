@@ -15,21 +15,34 @@ class WithdrawRequestController extends Controller
 {
     use AuthorizesRequests;
     
-    // List all requests of the authenticated user
-    public function index(Request $request)
+    /**
+     * GET /withdraw-requests
+     * Return all withdraw requests, each including its user info.
+     */
+    public function index()
     {
-        return $request->user()
-                       ->withdrawRequests()
-                       ->orderBy('created_at','desc')
-                       ->get();
+        $withdrawals = WithdrawRequest::with('user')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return response()->json([
+            'withdrawals' => $withdrawals,
+        ], 200);
     }
 
-    // Show a single request
-    public function show(WithdrawRequest $withdraw_request)
+    /**
+     * GET /withdraw-requests/{id}
+     * Return a single withdraw request (by UUID) along with its user.
+     */
+    public function show($id)
     {
-        $this->authorize('view', $withdraw_request);
-        return $withdraw_request;
+        $withdrawal = WithdrawRequest::with('user')->findOrFail($id);
+
+        return response()->json([
+            'withdraw_request' => $withdrawal,
+        ], 200);
     }
+
 
     // Store a new withdraw request
     public function store(StoreWithdrawRequest $request)

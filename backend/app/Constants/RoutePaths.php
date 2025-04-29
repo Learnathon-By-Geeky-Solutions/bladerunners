@@ -10,5 +10,4 @@ class RoutePaths
     public const ASSIGNMENTS_SHOW = '/assignments/{project_id}';
     public const PAYMENT_SHOW = '/payments/{id}';
     public const REVIEW_SHOW = '/reviews/{id}';
-    public const WITHDRAW_SHOW = '/withdraw-requests/{withdraw_request}';
 }

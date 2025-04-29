@@ -1,0 +1,132 @@
+{
+  "getWithdrawRequests": {
+    "method": "GET",
+    "url": "/withdraw-requests",
+    "description": "Retrieve all withdraw requests in the system, each including its user info",
+    "response": {
+      "withdrawals": [
+        {
+          "id": "string (UUID)",
+          "user_id": "string (UUID)",
+          "amount": "number (decimal)",
+          "gateway": "string",
+          "payment_details": { "key": "value", "…" },
+          "status": "string",
+          "created_at": "string (datetime)",
+          "updated_at": "string (datetime)",
+          "user": {
+            "id": "string (UUID)",
+            "name": "string",
+            "email": "string",
+            "balance": "number"
+          }
+        }
+      ]
+    },
+    "error": {
+      "unauthorized": { "message": "Unauthenticated" }
+    }
+  },
+
+  "getWithdrawRequest": {
+    "method": "GET",
+    "url": "/withdraw-requests/{id}",
+    "url_params": {
+      "id": "string (UUID)"
+    },
+    "description": "Retrieve a single withdraw request by its ID, including its user info",
+    "response": {
+      "withdraw_request": {
+        "id": "string (UUID)",
+        "user_id": "string (UUID)",
+        "amount": "number (decimal)",
+        "gateway": "string",
+        "payment_details": { "key": "value", "…" },
+        "status": "string",
+        "created_at": "string (datetime)",
+        "updated_at": "string (datetime)",
+        "user": {
+          "id": "string (UUID)",
+          "name": "string",
+          "email": "string",
+          "balance": "number"
+        }
+      }
+    },
+    "error": {
+      "unauthorized": { "message": "Unauthenticated" },
+      "not_found":   { "message": "Withdraw request not found" }
+    }
+  },
+
+  "createWithdrawRequest": {
+    "method": "POST",
+    "url": "/withdraw-requests",
+    "headers": {
+      "Authorization": "string (Bearer token)"
+    },
+    "request": {
+      "amount": "number (required, <= user.balance)",
+      "gateway": "string (required, one of 'stripe','sslcommerz','bkash')",
+      "payment_details": "object (required; gateway-specific fields)"
+    },
+    "description": "Create a new withdraw request (deducts full amount, credits 2% fee, stores net)",
+    "response": {
+      "id": "string (UUID)",
+      "user_id": "string (UUID)",
+      "amount": "number (decimal)",
+      "gateway": "string",
+      "payment_details": { "key": "value", "…" },
+      "status": "string",
+      "created_at": "string (datetime)",
+      "updated_at": "string (datetime)"
+    },
+    "error": {
+      "validation_error": {
+        "errors": {
+          "amount": ["string"],
+          "gateway": ["string"],
+          "payment_details": ["string"]
+        }
+      },
+      "unauthorized": { "message": "Unauthenticated" },
+      "forbidden":    { "message": "Forbidden: insufficient balance" }
+    }
+  },
+
+  "approveWithdrawRequest": {
+    "method": "POST",
+    "url": "/withdraw-requests/{id}/approve",
+    "headers": {
+      "Authorization": "string (Bearer token - Admin only)"
+    },
+    "url_params": {
+      "id": "string (UUID)"
+    },
+    "description": "Approve a pending withdraw request (Admin only)",
+    "response": null,
+    "error": {
+      "unauthorized": { "message": "Unauthenticated" },
+      "forbidden":    { "message": "Forbidden: not allowed to approve" },
+      "not_found":    { "message": "Withdraw request not found" }
+    }
+  },
+
+  "rejectWithdrawRequest": {
+    "method": "POST",
+    "url": "/withdraw-requests/{id}/reject",
+    "headers": {
+      "Authorization": "string (Bearer token - Admin only)"
+    },
+    "url_params": {
+      "id": "string (UUID)"
+    },
+    "description": "Reject a pending withdraw request (Admin only)",
+    "response": null,
+    "error": {
+      "unauthorized": { "message": "Unauthenticated" },
+      "forbidden":    { "message": "Forbidden: not allowed to reject" },
+      "not_found":    { "message": "Withdraw request not found" }
+    }
+  }
+}
