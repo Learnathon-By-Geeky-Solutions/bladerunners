@@ -32,7 +32,5 @@ class AdminSeeder extends Seeder
                 'is_super_admin'=> true,
             ]
         );
-
-        // $this->command->info("Seeded super-admin for user {$user->email} ({$user->id}).");
     }
 }
