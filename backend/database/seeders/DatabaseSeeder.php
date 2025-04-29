@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
             UsersSeeder::class,
             FreelancersSeeder::class,
             ClientsSeeder::class,
+            AdminSeeder::class,
             ProjectsSeeder::class,
             BiddingsSeeder::class,
         ]);

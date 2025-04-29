@@ -21,7 +21,7 @@ class UsersSeeder extends Seeder
             // Admin
             [
                 'type' => 'Admin',
-                'email' => 'admin2@example.com',
+                'email' => 'admin@example.com',
                 'name' => 'Admin User',
                 'payment_phone' => '1234567890',
                 'balance' => 100.00,
