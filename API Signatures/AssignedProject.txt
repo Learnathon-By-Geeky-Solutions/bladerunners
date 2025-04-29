@@ -101,7 +101,7 @@
       "Authorization": "string (Bearer token - Client or Freelancer)"
     },
     "request": {
-      "status": "string (optional, one of 'Assigned', 'Submitted', 'In Progress', 'Completed', 'Canceled')",
+      "status": "string (optional, one of 'Assigned', 'Submitted', 'Completed', 'Canceled')",
       "completion_date": "string (nullable, date)",
       "review_id": "number (nullable, must exist in reviews table)"
     },

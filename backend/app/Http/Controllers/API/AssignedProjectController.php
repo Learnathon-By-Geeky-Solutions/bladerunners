@@ -160,7 +160,7 @@ class AssignedProjectController extends Controller
                 $assignment->status = 'Canceled';
                 // If no record existed, firstOrNew created it—so just mark failed.
                 $payment->status = 'Failed';
-                $project->status = 'Canceled';
+                $project->status = 'Closed';
                 break;
 
             default:
