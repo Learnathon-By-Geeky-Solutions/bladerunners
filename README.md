@@ -1,12 +1,16 @@
 <div align="center">
   
 <p>
-  <img src="https://github.com/Learnathon-By-Geeky-Solutions/bladerunners/blob/main/Design%20Structure/long_banner.png" alt="BanglaHire Logo" width="100%" height="300"/>
+  <img src="https://github.com/Learnathon-By-Geeky-Solutions/bladerunners/blob/main/Design%20Structure/long_banner.png" alt="BanglaHire Banner" width="100%" height="300"/>
 </p>
 
 # BanglaHire 🚀
 
 **A next-gen freelancing platform built with Next.js & Laravel for Bangladesh 🇧🇩**
+
+<p>
+  <img src="https://github.com/Learnathon-By-Geeky-Solutions/bladerunners/blob/main/Design%20Structure/banglahire_logo.png" alt="BanglaHire Logo" width="150" height="100"/>
+</p>
 
 <p align="center">
   <a href="https://bladerunners.proactive-coder.xyz">
@@ -205,8 +209,8 @@ docker compose up --build --remove-orphans
 
 
 ## 👥 Acknowledgments
-- **Mentor**: Shadman Ahmed Vai for his for his great support
-- The **Learnathon** community and **Geeky Solutions**.
+- **Shadman Ahmed (Mentor)** Vai for his for his great support
+- The **Learnathon** and **Geeky Solutions** community.
 
 ---
 
